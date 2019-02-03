@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="animator" type="com.sikmi.bundleanimatorsample.DrawerAnimator"/>
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#DFEFED" android:orientation="vertical">
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:gravity="center"
+                android:text="View B"
+                android:textAlignment="gravity" android:textColor="#000000"/>
+        </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:alpha="@{animator.t}"
+            android:background="#88000000">
+
+        </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#517D99" android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="8dp" android:text="View A"
+                    android:textColor="#ffffff"/>
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null" android:onClick="@{animator::toggleDrawer}"
+                    android:padding="16dp"
+                    android:rotation="@{180f*animator.t}"
+                    app:srcCompat="@android:drawable/arrow_down_float"/>
+            </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#BFE9DB"
+                app:height="@{animator.t * 200f * animator.density}">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" android:gravity="center"
+                    android:text="View C"
+                    android:textAlignment="gravity" android:textColor="#000000"/>
+            </FrameLayout>
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>
